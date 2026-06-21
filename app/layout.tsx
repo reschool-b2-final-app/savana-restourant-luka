@@ -9,17 +9,17 @@ const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
-
+// 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
+// Geist და Geist_Mono არის Google Fonts-ის ორი შრიფტი, რომლებიც გამოიყენება ამ აპლიკაციაში. ისინი არიან Next.js-ის მიერ შემოთავაზებული ფუნქციები, რომლებიც საშუალებას აძლევენ მარტივად ინტეგრირონ Google Fonts პროექტში. თითოეული შრიფტის კონფიგურაცია მოიცავს variable თვისებას, რომელიც განსაზღვრავს CSS ცვლადს შრიფტის გამოყენებისთვის, და subsets თვისებას, რომელიც მიუთითებს შრიფტის მხარდაჭერილ სიმბოლოების ნაკრებს. ეს შრიფტები გამოიყენება აპლიკაციის სტილში, რათა გაუმჯობესონ ვიზუალური იერსახე და მომხმარებლის გამოცდილება.
 export const metadata: Metadata = {
   title: "სავანა რესტორანი",
   description: "სწრაფი და სტუმართმოყვარე ქართული და აფრიკული გემოებით გაჯერებული სასადილო გამოცდილება",
 };
-
+// metadata ობიექტი განსაზღვრავს ვებ გვერდის მეტა ინფორმაციას, რომელიც გამოიყენება SEO-სთვის და ბრაუზერის ტაბის დასათაურებლად. title არის გვერდის სათაური, რომელიც გამოჩნდება ბრაუზერის ტაბში და საძიებო სისტემების შედეგებში, ხოლო description არის გვერდის აღწერა, რომელიც ასევე შეიძლება გამოჩნდეს საძიებო სისტემების შედეგებში და ეხმარება მომხმარებლებს გაიგონ, რაზეა ეს გვერდი. ამ კონკრეტულ შემთხვევაში, metadata აღწერს "სავანა რესტორანს" და მის უნიკალურ გემოებს, რაც მიზნად ისახავს მომხმარებლების ყურადღების მიპყრობას და მათი ინტერესის გაღვივებას რესტორნის მიმართ.
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -32,13 +32,13 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <CartProvider>
-          <header className="border-b border-white/10 bg-zinc-950/90 px-6 py-4 backdrop-blur-xl">
+          <header className="app-header px-6 py-4 backdrop-blur-xl">
             <div className="mx-auto flex max-w-6xl items-center justify-between gap-4">
               <div className="flex items-center gap-8">
-                <Link href="/" className="text-lg font-semibold text-white">
+                <Link href="/" className="text-lg font-semibold site-title">
                   სავანა
                 </Link>
-                <Link href="/menu" className="text-sm font-medium text-zinc-300 transition hover:text-white">
+                <Link href="/menu" className="text-sm font-medium nav-link">
                   მენიუ
                 </Link>
               </div>

@@ -1,42 +1,97 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #000000;
+  /* Base */
+  --bg: #071422; /* deep navy */
+  --surface: #0b2630; /* slightly lighter */
+  --card: #0f2f36;
+  --muted: #9aa6a9;
+  --text: #e6f2f1;
+  --border: rgba(255,255,255,0.06);
+
+  /* Accent palette */
+  --accent: #ff7a59; /* warm coral */
+  --accent-2: #38d9a9; /* mint */
+  --accent-3: #ffd28a; /* soft amber */
+
+  /* Buttons */
+  --btn-foreground: #071422;
+
+  /* Radii */
+  --radius-xl: 1.75rem;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
 body {
   min-height: 100vh;
   margin: 0;
-  background: radial-gradient(circle at top left, rgba(16, 185, 129, 0.12), transparent 28%),
-    radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.08), transparent 30%),
-    var(--background);
-  color: var(--foreground);
+  background: radial-gradient(1200px 600px at 8% 6%, rgba(255,122,89,0.06), transparent 20%),
+              radial-gradient(900px 500px at 92% 92%, rgba(56,217,169,0.05), transparent 18%),
+              var(--bg);
+  color: var(--text);
   font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+a { color: inherit; text-decoration: none; }
+
+::selection { background: rgba(255,122,89,0.18); color: var(--bg); }
+
+/* App header */
+.app-header {
+  background: linear-gradient(180deg, rgba(11,38,48,0.6), rgba(11,38,48,0.48));
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
 }
 
-* {
-  box-sizing: border-box;
+.site-title { color: var(--text); }
+.nav-link { color: var(--muted); transition: color .18s ease; }
+.nav-link:hover { color: var(--text); }
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent-2) 30%));
+  color: var(--btn-foreground);
+}
+.btn-primary:hover { opacity: 0.95; }
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
 }
 
-html {
-  scroll-behavior: smooth;
+/* Cart status */
+.cart-status {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  color: var(--text);
 }
 
-::selection {
-  background: rgba(16, 185, 129, 0.25);
-  color: #000000;
+/* Cards */
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
 }
+
+.accent { color: var(--accent); }
+.price { color: var(--accent-2); font-weight: 700; }
+
+.app-main { background: transparent; }
+
+.image-frame { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.04)); border: 1px solid var(--border); }
+
+.muted { color: var(--muted); }
+

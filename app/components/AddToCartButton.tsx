@@ -2,22 +2,22 @@
 
 import { useState } from "react";
 import { useCart } from "@/app/components/CartProvider";
-
+// AddToCartButton კომპონენტი არის მარტივი და ინტუიტიური ღილაკი, რომელიც მომხმარებლებს საშუალებას აძლევს დაამატონ კონკრეტული ნივთი კალათაში. ის იღებს itemId-ს, რომელიც წარმოადგენს დამატების 대상 ნივთის უნიკალურ იდენტიფიკატორს. როდესაც მომხმარებელი დააჭერს ღილაკს, ის გამოიძახებს addItem ფუნქციას CartProvider-დან, რომელიც მართავს კალათის მდგომარეობას, და დროებით შეცვლის ღილაკის ტექსტს "დამატებულია", რათა ვიზუალურად დაადასტუროს მომხმარებლის მოქმედება. 1200 მილიწამში, ღილაკი დაბრუნდება საწყის მდგომარეობაში, მზად ახალი დამატებისთვის.
 export default function AddToCartButton({ itemId }: { itemId: number }) {
   const { addItem } = useCart();
   const [added, setAdded] = useState(false);
-
+// handleClick ფუნქცია გამოიყენება, როდესაც მომხმარებელი დააჭერს "კალათაში" ღილაკს. ის იძახებს addItem ფუნქციას, რომელიც კალათაში დამატების ლოგიკას ახორციელებს, შემდეგ კი აყენებს added მდგომარეობას true-ზე, რაც დროებით ცვლის ღილაკის ტექსტს "დამატებულია". 1200 მილიწამში, added მდგომარეობა ისევ false-ზე გადადის, რაც საშუალებას აძლევს ღილაკს დაბრუნდეს საწყის მდგომარეობაში და მზად იყოს ახალი დამატებისთვის.
   const handleClick = () => {
     addItem(itemId, 1);
     setAdded(true);
     window.setTimeout(() => setAdded(false), 1200);
   };
-
+// ღილაკი არის სტილიზებული, რომ იყოს მიმზიდველი და ადვილად შესამჩნევი, რაც ხელს უწყობს მომხმარებლებს სწრაფად და მარტივად დაამატონ ნივთები კალათაში. მისი დიზაინი და ფუნქციონალობა შექმნილია იმისთვის, რომ გაუმჯობესოს მომხმარებლის გამოცდილება და გაზარდოს კონვერსიები ვებ აპლიკაციაში.
   return (
     <button
       type="button"
       onClick={handleClick}
-      className="inline-flex h-12 items-center justify-center rounded-full bg-emerald-400 px-5 text-sm font-semibold text-zinc-950 transition hover:bg-emerald-300"
+      className="inline-flex h-12 items-center justify-center rounded-full px-5 text-sm font-semibold transition btn-primary"
     >
       {added ? "დამატებულია" : "კალათაში"}
     </button>
